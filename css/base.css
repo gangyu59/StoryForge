@@ -140,6 +140,27 @@ body {
   flex: 0 0 auto;
 }
 
+.sf-llm-key-box label {
+  display: block;
+  margin-top: 16px;   /* 与上面按钮拉开距离 */
+  margin-bottom: 8px; /* 与输入框保持呼吸感 */
+}
+
+.sf-llm-key-box .sf-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sf-confirm-btn {
+  background: #22c55e;       /* 绿色 */
+  border-color: #22c55e;
+  color: #fff;
+}
+
+.sf-confirm-btn:active {
+  background: #16a34a;       /* 按下稍深 */
+}
+
 /* ===== Voice Overlay ===== */
 .sf-voice-overlay{
   position: fixed;
