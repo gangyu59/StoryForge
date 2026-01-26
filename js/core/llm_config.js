@@ -11,7 +11,7 @@
             model: 'ep-20251216163420-sfnk6'
         },
         ark: {
-            apiKey: 'fc5def6d-547e-47ab-b70a-95e0391cbc67',
+            apiKey: 'ARK_API_KEY_HERE',
             apiUrl: 'https://ark.cn-beijing.volces.com/api/v3/chat/completions',
             model: 'ep-20250313161944-69jw8'
         },
