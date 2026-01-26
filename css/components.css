@@ -1,0 +1,94 @@
+.sf-choice-btn {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 10px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-size: 15px;
+}
+.sf-choice-btn:active {
+    transform: scale(0.98);
+}
+.sf-muted {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.sf-milestone {
+    border: 1px solid rgba(106,166,255,0.4);
+    background: linear-gradient(
+        135deg,
+        rgba(106,166,255,0.12),
+        rgba(106,166,255,0.04)
+    );
+}
+.sf-milestone h4 {
+    margin: 0 0 6px;
+    color: var(--accent);
+}
+
+.sf-world-update {
+    border-left: 3px solid var(--accent);
+    background: rgba(106,166,255,0.06);
+}
+
+.sf-llm-btn.active {
+    background: linear-gradient(
+        135deg,
+        rgba(106,166,255,0.9),
+        rgba(106,166,255,0.7)
+    );
+    box-shadow: 0 0 0 2px rgba(106,166,255,0.2);
+}
+
+.sf-llm-btn.active::after {
+    content: "";
+    font-weight: bold;
+}
+
+/* 顶部状态文字 */
+.sf-status {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4cff6a; /* 鲜绿色 */
+    letter-spacing: 0.5px;
+}
+
+.sf-status.thinking {
+    color: #9affb0; /* 浅绿 */
+}
+
+/* Thinking 容器 */
+.sf-thinking {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 隐藏 */
+.sf-thinking.hidden {
+    display: none;
+}
+
+/* 开口圆弧 Spinner */
+.sf-arc-spinner {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top: 3px solid #7dff9b;     /* 浅绿 */
+    border-right: 3px solid #7dff9b;  /* 大半圆效果 */
+    border-left: 3px solid rgba(125, 255, 155, 0.15);
+    border-bottom: 3px solid rgba(125, 255, 155, 0.05);
+    animation: sf-arc-spin 0.9s linear infinite;
+}
+
+/* 旋转动画 */
+@keyframes sf-arc-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}

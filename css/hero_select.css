@@ -1,0 +1,69 @@
+.sf-hero-select {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px;
+    text-align: center;
+}
+
+.sf-hero-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.sf-hero-subtitle {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 24px;
+}
+
+.sf-hero-cards {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sf-hero-card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 16px;
+    width: 260px;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.sf-hero-card:hover {
+    transform: translateY(-4px);
+    border-color: #4cff88;
+}
+
+.sf-hero-card h3 {
+    margin-bottom: 8px;
+}
+
+.sf-hero-desc {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.sf-hero-card ul {
+    list-style: none;
+    padding: 0;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.sf-hero-card li {
+    margin: 4px 0;
+}
+
+.sf-hero-btn {
+    background: #4cff88;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+}

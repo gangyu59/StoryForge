@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>StoryForge</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/game.css" />
+		<link rel="stylesheet" href="css/team_mission.css" />
+		<link rel="stylesheet" href="css/journey.css" />
+
+    <!-- Hero Select -->
+    <link rel="stylesheet" href="css/hero_select.css" />
+
+    <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+<div id="app"></div>
+
+<!-- ===== Avatar Preload（Journey 专用）===== -->
+<div id="sf-avatar-preload" style="display:none;">
+    <img id="avatar-sakura" src="assets/Sakura.jpg" />
+    <img id="avatar-jerry"  src="assets/Jerry.jpg" />
+    <img id="avatar-kevin"  src="assets/Kevin.jpg" />
+    <img id="avatar-you"    src="assets/Michelle.jpg" />
+</div>
+
+<!-- ================= Core ================= -->
+<script src="js/core/namespace.js"></script>
+<script src="js/core/safe_assign.js"></script>
+<script src="js/core/world.js"></script>
+<script src="js/core/memory.js"></script>
+<script src="js/core/milestone.js"></script>
+<script src="js/core/session.js"></script>
+<script src="js/core/event_loop.js"></script>
+<script src="js/core/llm_config.js"></script>
+<script src="js/core/llm_router.js"></script>
+<script src="js/core/ai_engine.js"></script>
+
+<!-- ================= UI 基础（必须先有 DOM） ================= -->
+<script src="js/ui/layout.js"></script>
+
+<!-- ================= UI 基础视图（dialogue / input） ================= -->
+<script src="js/ui/dialogue_view.js"></script>
+<script src="js/ui/input_view.js"></script>
+
+<!-- ================= Game（逻辑层） ================= -->
+<script src="js/game/characters.js"></script>
+<script src="js/game/journey_themes/kyoto_sakura.js"></script>
+<script src="js/game/journey_themes/antarctica_expedition.js"></script>
+<script src="js/game/journey_themes/africa_migration.js"></script>
+<script src="js/game/journey_engine.js"></script>
+
+<!-- ================= Custom Theme Builder ================= -->
+<script src="js/game/journey_custom_builder.js"></script>
+
+<!-- ================= 其他 Game（原系统，不影响） ================= -->
+<script src="js/game/narrative.js"></script>
+<script src="js/game/choices.js"></script>
+<script src="js/game/hooks.js"></script>
+<script src="js/game/team_mission.js"></script>
+<script src="js/game/mission_engine.js"></script>
+
+<!-- ================= UI 其他视图（原系统） ================= -->
+<script src="js/ui/team_mission_view.js"></script>
+<script src="js/ui/llm_settings_view.js"></script>
+<script src="js/ui/hero_select.js"></script>
+<script src="js/ui/scene_view.js"></script>
+<script src="js/ui/choice_view.js"></script>
+<script src="js/ui/loading.js"></script>
+<script src="js/ui/milestone_view.js"></script>
+<script src="js/ui/world_update_view.js"></script>
+<script src="js/ui/home_view.js"></script>
+<!-- ================= Custom Theme ================= -->
+<script src="js/ui/custom_theme_view.js"></script>
+<script src="js/ui/input_theme_view.js"></script>
+
+<!-- ================= App（入口，必须最后） ================= -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

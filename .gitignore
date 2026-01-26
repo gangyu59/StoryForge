@@ -1,0 +1,5 @@
+node_modules/
+.DS_Store
+js/core/llm_config.js
+.env
+*.log

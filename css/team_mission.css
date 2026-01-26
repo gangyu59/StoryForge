@@ -1,0 +1,72 @@
+/* Team Mission UI */
+
+.sf-hud { margin: 12px 12px 0; }
+.sf-hud-row { display: flex; gap: 10px; }
+.sf-meter { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 10px 10px 8px; }
+.sf-meter-label { font-size: 12px; opacity: 0.75; margin-bottom: 6px; }
+.sf-meter-bar { height: 10px; background: rgba(255,255,255,0.08); border-radius: 999px; overflow: hidden; }
+.sf-meter-fill { height: 100%; background: rgba(120, 255, 170, 0.85); border-radius: 999px; }
+.sf-meter-value { font-size: 12px; opacity: 0.8; margin-top: 6px; text-align: right; }
+
+.sf-meter-danger .sf-meter-fill { background: rgba(255, 120, 120, 0.85); }
+
+.sf-hud-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.sf-pill { font-size: 12px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); }
+
+.sf-team-grid { margin: 12px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+.sf-agent-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 12px; }
+.sf-agent-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.sf-agent-name { font-weight: 700; letter-spacing: 0.2px; }
+.sf-agent-tag { font-size: 11px; opacity: 0.75; padding: 2px 8px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); }
+.sf-agent-action { font-size: 14px; line-height: 1.35; margin: 6px 0; }
+.sf-agent-rationale { font-size: 12px; opacity: 0.8; line-height: 1.35; margin-bottom: 10px; }
+
+.sf-card.sf-narration, .sf-card.sf-adversary, .sf-card.sf-resolve, .sf-card.sf-end, .sf-card.sf-intro {
+    margin: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.sf-narration-title, .sf-adversary-title, .sf-resolve-title { font-weight: 700; margin-bottom: 8px; }
+.sf-narration-text { font-size: 14px; line-height: 1.45; }
+.sf-hook { margin-top: 8px; font-size: 12px; opacity: 0.85; }
+
+.sf-adversary-text { font-size: 13px; line-height: 1.4; }
+.sf-adversary-hint { margin-top: 8px; font-size: 12px; opacity: 0.9; border-left: 3px solid rgba(120,255,170,0.7); padding-left: 10px; }
+
+.sf-abilities { margin: 12px; }
+.sf-abilities-title { font-weight: 700; margin-bottom: 8px; }
+.sf-abilities-empty { font-size: 12px; opacity: 0.75; }
+
+.sf-abilities-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.sf-ability-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 10px; }
+.sf-ability-card.used { opacity: 0.6; }
+.sf-ability-name { font-weight: 700; margin-bottom: 4px; }
+.sf-ability-desc { font-size: 12px; opacity: 0.85; line-height: 1.35; margin-bottom: 8px; }
+.sf-ability-btn { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.08); color: inherit; }
+
+.sf-primary-btn, .sf-secondary-btn {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.10);
+    color: inherit;
+    font-weight: 700;
+}
+
+.sf-primary-btn { background: rgba(120,255,170,0.20); border-color: rgba(120,255,170,0.35); }
+.sf-secondary-btn { background: rgba(255,255,255,0.06); }
+
+.sf-footer-actions { margin: 12px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+.sf-intro-text { font-size: 14px; line-height: 1.5; opacity: 0.9; }
+.sf-intro-actions { margin-top: 12px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+
+.sf-reward { margin: 12px; background: rgba(120,255,170,0.10); border: 1px solid rgba(120,255,170,0.25); border-radius: 16px; padding: 12px; }
+.sf-reward-title { font-weight: 700; margin-bottom: 8px; }
+.sf-reward-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 10px; }
+.sf-reward-name { font-weight: 800; margin-bottom: 4px; }
+.sf-reward-desc { font-size: 12px; opacity: 0.85; line-height: 1.35; }
