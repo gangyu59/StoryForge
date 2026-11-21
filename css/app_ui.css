@@ -1,0 +1,199 @@
+/* StoryForge UI 2.0：统一的深色、简洁、大点击区。放在所有样式之后，覆盖旧规则。 */
+:root {
+    --bg-main: #0e1118;
+    --bg-panel: #141824;
+    --bg-card: #1b2030;
+    --text-main: #eceef5;
+    --text-muted: #8f97b3;
+    --accent: #7aa7ff;
+    --ok: #4cd08a;
+    --bad: #ff7a7a;
+}
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg-main); color: var(--text-main); }
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- 页头 ---------- */
+.sf-header { height: 52px; background: var(--bg-panel); border-bottom: 1px solid rgba(255,255,255,.06); padding: 0 8px; }
+.sf-left-btn { background: none; border: 0; color: var(--text-main); font-size: 15px; font-weight: 600; padding: 8px 10px; min-width: 64px; text-align: left; }
+.sf-left-icon { font-size: 22px; line-height: 1; margin-right: 2px; vertical-align: -2px; }
+.sf-header-center { flex: 1; text-align: center; min-width: 0; }
+.sf-journey-title { font-size: 15px; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.sf-header-right { min-width: 64px; justify-content: flex-end; gap: 2px; }
+.sf-icon-btn { background: none; border: 0; color: var(--text-main); font-size: 18px; width: 36px; height: 36px; border-radius: 10px; opacity: .9; }
+.sf-icon-btn:active { background: rgba(255,255,255,.08); }
+.sf-icon-btn.is-off { opacity: .5; }
+
+/* ---------- 首页 ---------- */
+.sf-home { max-width: 460px; margin: 0 auto; padding: 22px 6px 30px; text-align: center; }
+.sf-cast { display: flex; justify-content: center; gap: 18px; margin-bottom: 16px; }
+.sf-cast-item { display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+.sf-cast-item img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 2px rgba(255,255,255,.1); }
+.sf-home-title { font-size: 22px; margin: 6px 0 4px; color: #fff; }
+.sf-home-sub { margin: 0 0 22px; color: var(--text-muted); font-size: 14px; }
+.sf-trip-list { display: flex; flex-direction: column; gap: 12px; }
+.sf-trip { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px; border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.07); background: var(--bg-card); color: var(--text-main); text-align: left; transition: transform .12s, background .12s; }
+.sf-trip:hover { background: #222844; }
+.sf-trip:active { transform: scale(.985); }
+.sf-trip-icon { font-size: 28px; width: 40px; text-align: center; }
+.sf-trip-body { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sf-trip-body b { font-size: 16px; font-weight: 600; }
+.sf-trip-body small { font-size: 13px; color: var(--text-muted); }
+.sf-trip-go { font-size: 22px; color: var(--text-muted); }
+.sf-trip-secondary { background: transparent; border-style: dashed; border-color: rgba(255,255,255,.18); }
+.sf-status-line { margin-top: 26px; font-size: 12px; color: var(--text-muted); }
+.sf-status-line.ok::before { content: "●"; color: var(--ok); margin-right: 6px; }
+.sf-status-line.bad { color: var(--bad); }
+.sf-status-line.bad::before { content: "●"; margin-right: 6px; }
+
+/* ---------- 对话 ---------- */
+.sf-main { padding: 12px 12px 96px; scroll-behavior: smooth; }
+.sf-dialogue-row { display: flex; align-items: flex-end; gap: 10px; margin: 14px 4px; }
+.sf-avatar { width: 44px; height: 44px; margin: 0; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(255,255,255,.08); transition: box-shadow .2s, transform .2s; }
+.sf-bubble { max-width: 76%; padding: 9px 14px 10px; border-radius: 18px 18px 18px 6px; line-height: 1.55; font-size: 15px; color: #f3f4f8; }
+.sf-name { font-size: 12px; opacity: .65; margin-bottom: 2px; }
+.sf-text { white-space: pre-wrap; word-break: break-word; min-height: 1.55em; }
+.role-sakura .sf-bubble { background: #4f3c4c; }
+.role-jerry  .sf-bubble { background: #2f4263; }
+.role-kevin  .sf-bubble { background: #2c5048; }
+.role-sakura.is-speaking .sf-avatar { box-shadow: 0 0 0 3px #f2a7cd, 0 0 18px rgba(242,167,205,.55); transform: scale(1.06); }
+.role-jerry.is-speaking  .sf-avatar { box-shadow: 0 0 0 3px #7fb0ff, 0 0 18px rgba(127,176,255,.55); transform: scale(1.06); }
+.role-kevin.is-speaking  .sf-avatar { box-shadow: 0 0 0 3px #6fe0b0, 0 0 18px rgba(111,224,176,.55); transform: scale(1.06); }
+
+/* 你说的话：靠右 */
+.role-player { flex-direction: row-reverse; }
+.role-player .sf-bubble { background: #2a6b4a; border-radius: 18px 18px 6px 18px; }
+.role-player .sf-name { display: none; }
+
+/* 环境描写：居中小字，不抢戏 */
+.role-system { justify-content: center; margin: 18px 10px; }
+.sf-system-text { max-width: 92%; text-align: center; font-size: 13px; line-height: 1.7; color: var(--text-muted); font-style: italic; }
+
+/* ---------- 输入栏 ---------- */
+.sf-input-bar { background: rgba(20,24,36,.96); border-top: 1px solid rgba(255,255,255,.08); padding: 10px 10px calc(10px + env(safe-area-inset-bottom)); gap: 8px; align-items: center; }
+.sf-input { height: 44px; min-height: 44px; border: 1px solid rgba(255,255,255,.1); border-radius: 22px; padding: 11px 16px; background: #0e1118; color: var(--text-main); font-size: 15px; }
+.sf-input::placeholder { color: var(--text-muted); }
+.sf-send-btn { height: 44px; margin: 0; padding: 0 18px; border-radius: 22px; border: 0; background: var(--accent); color: #0b1020; font-weight: 600; }
+
+/* ---------- 设置浮层 ---------- */
+.sf-sheet-mask { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 3000; display: flex; align-items: flex-end; justify-content: center; }
+.sf-sheet { width: 100%; max-width: 480px; background: var(--bg-panel); border-radius: 20px 20px 0 0; padding: 16px 18px 28px; }
+.sf-sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 17px; }
+.sf-sheet-head button { background: none; border: 0; color: var(--accent); font-size: 15px; padding: 6px 4px; }
+.sf-set-row { display: flex; justify-content: space-between; align-items: center; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 15px; }
+.sf-set-row em { color: var(--text-muted); font-style: normal; font-size: 13px; }
+.sf-set-row input[type=checkbox] { width: 22px; height: 22px; accent-color: var(--accent); }
+.sf-set-row input[type=range] { width: 52%; accent-color: var(--accent); }
+.sf-set-title { margin: 16px 0 8px; font-size: 13px; color: var(--text-muted); }
+.sf-set-roles { display: flex; flex-wrap: wrap; gap: 8px; }
+.sf-role-btn { padding: 8px 12px; border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background: var(--bg-card); color: var(--text-main); font-size: 13px; }
+
+/* 自定义世界页的深色输入栏复用同一套 */
+.sf-theme-input-bar .sf-input { border-radius: 14px; }
+
+/* ---------- 常开聆听 ---------- */
+#sf-listen-toggle { position: relative; }
+#sf-listen-toggle.sf-listen-off { opacity: .4; filter: grayscale(1); }
+#sf-listen-toggle.sf-listen-listening::after { content: ""; position: absolute; right: 6px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+#sf-listen-toggle.sf-listen-hearing { background: rgba(224,86,63,.22); animation: sfListenPulse .8s ease-in-out infinite; }
+#sf-listen-toggle.sf-listen-busy { background: rgba(122,167,255,.22); animation: sfListenPulse 1.2s ease-in-out infinite; }
+@keyframes sfListenPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+.sf-toast { position: fixed; left: 50%; bottom: 90px; transform: translateX(-50%); max-width: 86%; background: rgba(20,24,36,.97); color: var(--text-main);
+    border: 1px solid rgba(255,255,255,.12); padding: 10px 16px; border-radius: 14px; font-size: 13px; z-index: 4000; transition: opacity .5s; }
+.sf-toast.out { opacity: 0; }
+.sf-set-row span em { display: block; margin-top: 2px; }
+
+/* ---------- 设置：名字 + 角色声音 ---------- */
+.sf-sheet { max-height: 88vh; overflow-y: auto; }
+.sf-set-row input[type=text] { width: 46%; box-sizing: border-box; background: #0e1118; color: var(--text-main); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px; padding: 8px 12px; font-size: 15px; outline: none; text-align: right; }
+.sf-set-title em { font-style: normal; opacity: .75; }
+.sf-set-roles { display: flex; flex-direction: column; gap: 10px; }
+.sf-role-row { display: flex; align-items: center; gap: 8px; }
+.sf-role-row > span { width: 52px; font-size: 14px; flex-shrink: 0; }
+.sf-role-row select { flex: 1; min-width: 0; background: var(--bg-card); color: var(--text-main); border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px; padding: 9px 8px; font-size: 13px; }
+.sf-role-row .sf-role-btn { width: 40px; padding: 8px 0; text-align: center; flex-shrink: 0; }
+
+/* ---------- 生成世界：等待层 ---------- */
+.sf-wait-mask { position: fixed; inset: 0; z-index: 3500; background: rgba(8,10,16,.78); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(3px); }
+.sf-wait-card { text-align: center; padding: 26px 30px; background: var(--bg-panel); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; max-width: 80%; }
+.sf-hourglass { font-size: 46px; display: inline-block; animation: sfHourglass 2.4s ease-in-out infinite; }
+@keyframes sfHourglass { 0% { transform: rotate(0); } 45% { transform: rotate(0); } 55% { transform: rotate(180deg); } 100% { transform: rotate(180deg); } }
+.sf-wait-title { margin-top: 10px; font-size: 17px; font-weight: 600; }
+.sf-wait-hint { margin-top: 8px; font-size: 14px; color: var(--accent); min-height: 1.4em; }
+.sf-wait-sub { margin-top: 10px; font-size: 12px; color: var(--text-muted); }
+.sf-theme-input-bar .sf-input:disabled, .sf-theme-send-btn:disabled { opacity: .5; }
+
+/* 输入栏：听到你说话时轻轻亮一下，不需要任何说话按钮 */
+.sf-input-bar { transition: box-shadow .2s; }
+.sf-input-bar.is-hearing { box-shadow: 0 -2px 18px rgba(224,86,63,.35); }
+.sf-input-bar.is-busy { box-shadow: 0 -2px 18px rgba(122,167,255,.3); }
+.sf-input { flex: 1; }
+#sf-listen-toggle.sf-listen-error { opacity: 1; background: rgba(255,122,122,.18); }
+#sf-listen-toggle.sf-listen-error::after { content: "!"; position: absolute; right: 3px; top: 1px; font-size: 12px; font-weight: 700; color: var(--bad); }
+
+/* ---------- 我的世界 ---------- */
+.sf-section-title { margin: 26px 0 10px; text-align: left; font-size: 13px; color: var(--text-muted); letter-spacing: .5px; }
+.sf-trip-mine { cursor: pointer; }
+.sf-trip-mine .sf-trip-body small { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.sf-trip-del { background: none; border: 0; color: var(--text-muted); font-size: 15px; width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0; }
+.sf-trip-del:hover { background: rgba(255,122,122,.15); color: var(--bad); }
+
+/* =====================================================================
+   手机适配（主要使用场景）
+   ===================================================================== */
+html, body { height: 100%; overscroll-behavior: none; -webkit-text-size-adjust: 100%; }
+body { touch-action: manipulation; }                 /* 去掉双击放大的 300ms 延迟 */
+#app { height: 100vh; height: 100dvh; }              /* dvh：随手机浏览器地址栏伸缩，不会被底部工具栏遮住 */
+
+/* 刘海 / 状态栏 / Home 条安全区（添加到主屏幕后全屏运行时生效） */
+.sf-header { height: calc(52px + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top);
+    padding-left: max(8px, env(safe-area-inset-left)); padding-right: max(8px, env(safe-area-inset-right)); }
+.sf-main { padding-bottom: calc(92px + env(safe-area-inset-bottom)); overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.sf-input-bar { padding-left: max(10px, env(safe-area-inset-left)); padding-right: max(10px, env(safe-area-inset-right)); }
+
+/* 触控目标不小于 44px；输入控件字号 ≥16px（iOS 小于 16px 会在聚焦时自动放大页面） */
+.sf-icon-btn { width: 44px; height: 44px; font-size: 20px; }
+.sf-left-btn { min-height: 44px; }
+.sf-input, .sf-theme-input, .sf-set-row input[type=text], .sf-role-row select { font-size: 16px; }
+.sf-send-btn { min-width: 64px; font-size: 16px; }
+.sf-trip { min-height: 64px; }
+.sf-role-row .sf-role-btn { width: 44px; height: 44px; }
+.sf-trip-del { width: 44px; height: 44px; }
+.sf-sheet { max-height: 88vh; max-height: 88dvh; padding-bottom: calc(28px + env(safe-area-inset-bottom)); }
+.sf-sheet-head button { min-height: 44px; min-width: 44px; }
+.sf-set-row { min-height: 52px; }
+.sf-set-row input[type=checkbox] { width: 26px; height: 26px; }
+.sf-theme-input { height: 64px; min-height: 64px; border-radius: 16px; }
+.sf-toast { bottom: calc(96px + env(safe-area-inset-bottom)); }
+
+/* 文字别被长按选中/弹出菜单打断阅读（输入框除外） */
+.sf-main, .sf-header { -webkit-touch-callout: none; }
+
+/* 窄屏（≤ 400px，如 iPhone SE / mini）：把空间让给对话 */
+@media (max-width: 400px) {
+    .sf-main { padding-left: 8px; padding-right: 8px; }
+    .sf-dialogue-row { margin: 12px 0; gap: 8px; }
+    .sf-avatar { width: 40px; height: 40px; }
+    .sf-bubble { max-width: 80%; font-size: 15px; }
+    .sf-home { padding-top: 14px; }
+    .sf-cast-item img { width: 52px; height: 52px; }
+    .sf-header-right { min-width: 0; }
+}
+
+/* 横屏手机：高度很矮，压缩页头和首页留白 */
+@media (max-height: 480px) and (orientation: landscape) {
+    .sf-header { height: calc(44px + env(safe-area-inset-top)); }
+    .sf-home { padding-top: 8px; }
+    .sf-cast { display: none; }
+    .sf-wait-card { padding: 14px 22px; }
+}
+.sf-header-center { padding: 0 6px; }
+@media (max-width: 400px) {
+    .sf-journey-title { font-size: 14px; }
+    .sf-left-btn { min-width: 0; padding: 8px 6px; }
+    .sf-icon-btn { width: 42px; }
+}

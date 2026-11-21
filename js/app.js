@@ -4,10 +4,6 @@
 
     document.addEventListener('DOMContentLoaded', function () {
 
-        // 1️⃣ 初始化 LLM
-        if (SF.llm && SF.llm.load) {
-            SF.llm.load();
-        }
 
         // ✅ 统一用 journey 体验（你不再需要身份/phase）
         SF.MODE = 'journey';
@@ -29,6 +25,10 @@
      * ✅ 回到首页（让用户重新选择）
      */
     SF.app.goHome = function () {
+        if (SF.journey && SF.journey.stop) SF.journey.stop();
+        var bar = document.querySelector('.sf-input-bar'); if (bar) bar.remove();
+        if (SF.ui.hideThemeInput) SF.ui.hideThemeInput();
+        if (SF.ui.hideThinking) SF.ui.hideThinking();
         SF.MODE = 'journey';
         SF.ui.renderLayout();
 
@@ -90,6 +90,8 @@
         // 启动 Journey
         if (SF.journey && SF.journey.startWithTheme) {
             SF.journey.startWithTheme(themeId);
+            // 进入旅程就开始聆听（可在页头 🎙 或设置里关闭）
+            if (SF.listen && SF.voice.get('listen')) SF.listen.start();
         } else {
             alert('Journey Engine 未加载（startWithTheme 不存在）');
         }

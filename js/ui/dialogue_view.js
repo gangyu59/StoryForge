@@ -3,6 +3,7 @@
     SF.ui = SF.ui || {};
 
     let lastBubbleTextEl = null;
+    let lastRowEl = null;
 
     function getAvatarById(avatarId, name) {
         var srcImg = document.getElementById(avatarId);
@@ -24,7 +25,7 @@
             sakura:   { name: '林之樱',  avatarId: 'avatar-sakura', cls: 'role-sakura' },
             jerry:    { name: '周行简',  avatarId: 'avatar-jerry',  cls: 'role-jerry' },
             kevin:    { name: '方野',    avatarId: 'avatar-kevin',  cls: 'role-kevin' },
-            michelle: { name: 'Michelle', avatarId: 'avatar-you',   cls: 'role-player' },
+            michelle: { name: '你', avatarId: 'avatar-you',   cls: 'role-player' },
             system:   { name: '', avatarId: null, cls: 'role-system' }
         };
 
@@ -68,6 +69,25 @@
 
         main.appendChild(row);
         main.scrollTop = main.scrollHeight;
+        lastRowEl = row;
+        return row;
+    };
+
+    SF.ui.dropEmptyBubble = function () {
+        if (lastRowEl && lastBubbleTextEl && !lastBubbleTextEl.textContent) {
+            lastRowEl.remove();
+            lastRowEl = null; lastBubbleTextEl = null;
+        }
+    };
+
+    // ✅ 正在说话的角色：头像亮起光圈
+    SF.ui.setSpeaking = function (on) {
+        document.querySelectorAll('.sf-dialogue-row.is-speaking').forEach(function (r) {
+            r.classList.remove('is-speaking');
+        });
+        if (on && lastRowEl && !lastRowEl.classList.contains('role-system')) {
+            lastRowEl.classList.add('is-speaking');
+        }
     };
 
     // ✅ 打字机用：更新最后一句

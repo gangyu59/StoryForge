@@ -3,3 +3,6 @@ node_modules/
 js/core/llm_config.js
 .env
 *.log
+.venv/
+data/
+__pycache__/

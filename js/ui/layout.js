@@ -3,6 +3,31 @@
     SF.ui = SF.ui || {};
 
     /**
+     * 手机键盘弹出时，让固定在底部的输入栏贴着键盘上沿（iOS Safari 默认会被键盘盖住）。
+     * 用 visualViewport 计算键盘高度；栏被移除后自动解除监听。
+     */
+    SF.ui.trackKeyboard = function (bar) {
+        var vv = window.visualViewport;
+        if (!vv || !bar) return;
+        function fit() {
+            if (!document.body.contains(bar)) {
+                vv.removeEventListener('resize', fit);
+                vv.removeEventListener('scroll', fit);
+                return;
+            }
+            var off = window.innerHeight - vv.height - vv.offsetTop;
+            bar.style.bottom = Math.max(0, Math.round(off)) + 'px';
+            if (off > 80) {                                   // 键盘出来了：把最新消息顶上来
+                var main = document.querySelector('.sf-main');
+                if (main) main.scrollTop = main.scrollHeight;
+            }
+        }
+        vv.addEventListener('resize', fit);
+        vv.addEventListener('scroll', fit);
+        fit();
+    };
+
+    /**
      * 主布局渲染
      * 会根据 SF.MODE 决定显示哪些区块
      */
@@ -16,7 +41,7 @@
             <header class="sf-header">
                 <!-- 左侧：可点击（Home 或 StoryForge） -->
                 <button class="sf-left-btn" id="sf-left-home-btn" type="button">
-                    <span id="sf-left-home-icon" class="sf-left-icon" style="display:none;">🏠</span>
+                    <span id="sf-left-home-icon" class="sf-left-icon" style="display:none;">‹</span>
                     <span id="sf-left-home-text" class="sf-left-text">StoryForge</span>
                 </button>
 
@@ -51,7 +76,9 @@
                                 <span class="sf-status" id="sf-status">Ready</span>
                               `
                     }
-                    <span class="sf-settings-btn" id="sf-settings-btn">⚙️</span>
+                    <button class="sf-icon-btn" id="sf-listen-toggle" type="button" title="常开聆听：不用按键，直接说话"></button>
+                    <button class="sf-icon-btn" id="sf-voice-toggle" type="button" title="角色语音开关"></button>
+                    <button class="sf-icon-btn" id="sf-settings-btn" type="button" title="设置">⚙</button>
                 </div>
             </header>
 
@@ -68,6 +95,7 @@
         if (homeBtn) {
             homeBtn.addEventListener('click', function () {
                 // 优先走 app.goHome
+                if (SF.journey && SF.journey.stop) SF.journey.stop();
                 if (SF.app && typeof SF.app.goHome === 'function') {
                     SF.app.goHome();
                     return;
@@ -76,6 +104,38 @@
                 if (SF.ui && typeof SF.ui.renderHome === 'function') {
                     SF.ui.renderHome();
                 }
+            });
+        }
+
+        // 语音开关：一键静音 / 开声
+        var vt = document.getElementById('sf-voice-toggle');
+        function paintVoice() {
+            if (!vt || !SF.voice) return;
+            var on = SF.voice.get('voice');
+            vt.textContent = on ? '🔊' : '🔇';
+            vt.classList.toggle('is-off', !on);
+        }
+        if (vt) {
+            paintVoice();
+            vt.addEventListener('click', function () {
+                SF.voice.set('voice', !SF.voice.get('voice'));
+                paintVoice();
+            });
+        }
+        SF.ui.paintVoiceToggle = paintVoice;
+
+        // 🎙 常开聆听开关
+        var lt = document.getElementById('sf-listen-toggle');
+        if (lt && SF.listen) {
+            SF.listen.onState(function (st) {
+                lt.textContent = '🎙';
+                lt.className = 'sf-icon-btn sf-listen-' + st;
+                lt.title = { off: '点击开启常开聆听', error: '麦克风没打开，点击重试', listening: '正在聆听…（点击关闭）', hearing: '听到你了…', busy: '识别中…' }[st];
+            });
+            lt.addEventListener('click', function () {
+                var turningOn = !SF.listen.isOn();
+                SF.voice.set('listen', turningOn);
+                SF.listen.toggle();
             });
         }
 
@@ -134,7 +194,7 @@
         } else {
             icon.style.display = 'inline';
             text.style.display = 'inline';
-            text.textContent = 'Home';
+            text.textContent = '返回';
         }
     };
 

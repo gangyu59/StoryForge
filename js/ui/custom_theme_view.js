@@ -99,13 +99,24 @@
                     text,
                     function (theme) {
                         SF.ui.hideThinking && SF.ui.hideThinking();
+                        if (!SF.ui._themeInputRef) return;   // 生成途中你已经点了返回：不再自动进入旅程
 
                         // 生成成功后：Theme 输入框必须消失
                         SF.ui.hideThemeInput && SF.ui.hideThemeInput();
 
+                        // 清掉“定义世界”的介绍页，只留下故事
+                        var m = document.querySelector('.sf-main');
+                        if (m) m.innerHTML = '';
+                        if (SF.ui.setJourneyTitle) SF.ui.setJourneyTitle(theme.title);
+
                         // 注入新 theme
                         SF.journeyThemes = SF.journeyThemes || {};
                         SF.journeyThemes[theme.id] = theme;
+
+                        // 自动保存：以后在首页“我的世界”里直接进入
+                        SF.worlds.save(theme).then(function (ok) {
+                            if (!ok && SF.ui.toast) SF.ui.toast('世界没能保存下来，本次仍可正常游玩');
+                        });
 
                         // 进入旅程：显示“对话输入框”，并启动
                         if (SF.ui.renderInputBox) {
@@ -113,13 +124,14 @@
                         }
                         if (SF.journey && SF.journey.startWithTheme) {
                             SF.journey.startWithTheme(theme.id);
+                            if (SF.listen && SF.voice.get('listen')) SF.listen.start();
                         } else {
                             alert('Journey Engine 未加载（startWithTheme 不存在）');
                         }
                     },
                     function (err) {
                         SF.ui.hideThinking && SF.ui.hideThinking();
-                        alert(err);
+                        SF.ui.toast('世界没生成成功：' + err + '。可以改一改描述再试一次');
                     }
                 );
             }
